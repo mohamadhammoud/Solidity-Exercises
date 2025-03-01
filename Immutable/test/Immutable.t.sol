@@ -7,8 +7,9 @@ import "../src/Immutable.sol";
 contract ContractImmutableTest is Test {
     ContractImmutable public contractImmutable;
 
-    function setUp() public {}
-
+    function setUp() public {
+        contractImmutable = new ContractImmutable(0);
+    }
     function testContractImmutable() external {
         uint256 startGas = gasleft();
         contractImmutable = new ContractImmutable(10);

@@ -15,5 +15,10 @@ contract DistributeV2 {
 
     function distributeEther(address[] memory addresses) public {
         // your code here
+        uint256 amount = address(this).balance / addresses.length;
+        for (uint256 i = 0; i < addresses.length; i++) {
+            // we use send instead of transfer to handle the case where the recipient rejects the transfer
+            payable(addresses[i]).send(amount);
+        }
     }
 }
